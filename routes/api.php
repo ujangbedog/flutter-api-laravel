@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishlistController;
@@ -34,9 +33,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/register', [UserController::class, 'store']);
     Route::get('/users', [UserController::class, 'index']);
 
-    //CATEGORY
-    Route::get('/categories', [CategoryController::class, 'index']);
-
     //PRODUCT
     Route::get('/products', [ProductController::class, 'index']);
 
@@ -54,12 +50,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::delete('/users/{id}', [UserController::class, 'destroy']);
         Route::post('/users/{id}', [UserController::class, 'update']);
         Route::get('/users/{id}', [UserController::class, 'show']);
-
-
-        //CATEGORY
-        Route::post('/categories', [CategoryController::class, 'store']);
-        Route::post('/categories/{id}', [CategoryController::class, 'update']);
-        Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
 
         //WISHLIST
         Route::post('/wishlist', [WishlistController::class, 'index']);
